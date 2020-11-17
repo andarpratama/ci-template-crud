@@ -3,14 +3,16 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class TemplateModel extends CI_Model
 {
-    public function getAll($table)
+    public static $table = 'template';
+
+    public function All()
     {
-        return $this->db->get($table)->result_array();
+        return $this->db->get(self::$table);
     }
 
-    public function getById($id, $table)
+    public function ById($id)
     {
-        return $this->db->get_where($table, array('id' => $id));
+        return $this->db->get_where(self::$table, array('id' => $id));
     }
 
     public function validation()

@@ -12,13 +12,13 @@ class Template extends CI_Controller
 
     public function index()
     {
-        $data['template'] = $this->TemplateModel->getAll('template'); //table argument
+        $data['template'] = $this->TemplateModel->All();
         $this->load->view('template', $data);
     }
 
     public function show($id)
     {
-        $data['template'] = $this->TemplateModel->getById($id);
+        $data['template'] = $this->TemplateModel->ById($id);
         $this->load->view('template', $data);
     }
 
@@ -26,10 +26,8 @@ class Template extends CI_Controller
     public function save()
     {
         if ($this->TemplateModel->validation() == false) {
-            /* do or load something if validation failed */
             $this->load->view('index');
         } else {
-            /* do or load something if validation success*/
             $this->TemplateModel->doSave($_POST);
             redirect('template');
         }
@@ -38,10 +36,8 @@ class Template extends CI_Controller
     public function update()
     {
         if ($this->TemplateModel->validation() == false) {
-            /* do or load something if validation failed */
             $this->load->view('index');
         } else {
-            /* do or load something if validation success*/
             $this->TemplateModel->doUpdate($_POST);
             redirect('template');
         }
